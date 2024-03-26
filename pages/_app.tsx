@@ -1,3 +1,4 @@
+import starter from "../starter.config";
 import "@/styles/globals.css";
 import { Noto_Sans_KR } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -10,7 +11,9 @@ const notoSansKR = Noto_Sans_KR({
 export default function MyApp({ Component, pageProps }) {
   return (
     <main className={notoSansKR.className}>
-      <GoogleAnalytics gaId="" />
+      {starter.googleAnalytics && (
+        <GoogleAnalytics gaId={starter.googleAnalytics.gaId} />
+      )}
       <Component {...pageProps} />
     </main>
   );
